@@ -3,7 +3,7 @@ import useApi from '../hooks/useApi'
 import hocAPI from './hocs/apiHoc'
 import { Link } from 'react-router-dom'
 
-const Blogs = ({data: blogs}) => {
+const Blogs = ({ data: blogs }) => {
     // const [blogs, setBlogs] = useState([])
     // const blogsFetched = useRef(false)
     // const API = useApi()
@@ -40,11 +40,11 @@ const Blogs = ({data: blogs}) => {
                                 </div>
                                 <div className="blog-message">
                                     <button type="button" className="blog-like blog-btn">
-                                        <span className="blog-count"></span>
+                                        <span className="blog-count">{blog.likes.length}</span>
                                         <ion-icon size="large" name="thumbs-up"></ion-icon>
                                     </button>
                                     <button className="blog-comment blog-btn">
-                                        <span className="blog-count"></span>
+                                        <span className="blog-count">{blog.comments.length}</span>
                                         <ion-icon size="large" name="chatbubbles"></ion-icon>
                                     </button>
                                 </div>

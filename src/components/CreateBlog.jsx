@@ -62,7 +62,7 @@ const CreateBlog = ({ data }) => {
                         <div key={blog._id} className="user-blog">
                             <div className="blog-name">{blog.title}</div>
                             <div className="blog-email">Admin</div>
-                            <div className="blog-message">{blog.content}</div>
+                            <div className="blog-message">{(blog.content.length > 200 ? blog.content.slice(0, 200) + '...' : blog.content)}</div>
                             {blog.image && <img src={BASE_URL + '/' + blog.image} className="blog-image" />}
                             <div className="blog-message">
                                 <Link to={"/article?id=" + blog._id} className="blog-readmore inline-block px-3 mr-2">Read
