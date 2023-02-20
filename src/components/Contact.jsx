@@ -1,6 +1,18 @@
 import React from 'react'
+import useApi from '../hooks/useApi'
+import { useForm } from 'react-hook-form'
 
 const Contact = () => {
+    const API = useApi()
+    const {register, handleSubmit} = useForm();
+
+    const creatContact = (data) => {
+        API.request(
+            () => API.contacts.create(JSON.stringify(data)),
+            () => {},
+            'Message sent successfully!'
+        )
+    }
     return (
         <section>
             <div  className="left">
@@ -13,11 +25,11 @@ const Contact = () => {
                 </ul>
             </div>
             <div className="right">
-                <form action="#" id="contact-form" className="contact">
-                    <input id="contact-names" type="text" placeholder="Full Name" />
-                    <input id="contact-email" type="text" placeholder="Email" />
-                    <textarea id="contact-message" placeholder="Message.."></textarea>
-                    <button>Send</button>
+                <form onSubmit={handleSubmit(creatContact)} id="contact-form" className="contact">
+                    <input {...register('fullName')} id="contact-names" type="text" placeholder="Full Name" />
+                    <input {...register('email')} id="contact-email" type="text" placeholder="Email" />
+                    <textarea {...register('message')} id="contact-message" placeholder="Message.."></textarea>
+                    <button type='submit'>Send</button>
                 </form>
             </div>
         </section>
